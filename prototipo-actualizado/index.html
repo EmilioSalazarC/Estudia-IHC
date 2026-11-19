@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Estudia+ · Prototipo actualizado</title>
+<style>
+:root{--bg:#F4F6FB;--card:#fff;--ink:#1E2340;--sub:#6A7099;--pri:#3B3FA8;--acc:#19B394;--line:#CBD0E6;--tag:#DDF5EF;--tagt:#0E7F69;--soft:#DDE0F7;--out:#E9ECF6;--on:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14162B;--card:#1F2240;--ink:#EDEFFA;--sub:#A3A9D1;--pri:#8F94F5;--acc:#2CCBA9;--line:#3A3F68;--tag:#16403A;--tagt:#5FE3C6;--soft:#2D3160;--out:#0C0D1C;--on:#14162B}}
+:root[data-theme="dark"]{--bg:#14162B;--card:#1F2240;--ink:#EDEFFA;--sub:#A3A9D1;--pri:#8F94F5;--acc:#2CCBA9;--line:#3A3F68;--tag:#16403A;--tagt:#5FE3C6;--soft:#2D3160;--out:#0C0D1C;--on:#14162B}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:Arial,"Liberation Sans",sans-serif;background:var(--out);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.phone{width:390px;height:min(780px,calc(100% - 40px));background:var(--bg);border-radius:28px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,.25);position:relative}
+@media (max-width:500px){body{justify-content:flex-start;gap:0}.phone{width:100%;height:100%;border-radius:0;box-shadow:none}.rs{display:none}}
+.scr{flex:1;overflow-y:auto;padding-bottom:12px}
+.top{background:var(--pri);color:var(--on);padding:18px 20px 20px;border-radius:0 0 22px 22px}
+.top h1{font-size:20px}.top p{font-size:12px;opacity:.85;margin-top:3px}
+.back{background:none;border:0;color:inherit;font-size:13px;margin-bottom:8px;cursor:pointer;padding:0}
+.pad{padding:16px 20px}
+.logo{font-size:32px;font-weight:700;color:var(--pri);text-align:center;margin-top:18px}.logo span{color:var(--acc)}
+label{display:block;font-size:12px;font-weight:700;margin:12px 0 5px;color:var(--sub)}
+input,select{width:100%;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;font-size:14px;font-family:inherit}
+input:focus,select:focus{outline:2px solid var(--pri)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--pri);color:var(--on);border:0;border-radius:12px;padding:13px;font-weight:700;font-size:14px;margin-top:18px;cursor:pointer;font-family:inherit}
+.btn.g{background:var(--acc);color:#fff}
+.btn.o{background:none;color:var(--pri);border:1.5px solid var(--pri);margin-top:10px}
+.lnk{background:none;border:0;color:var(--pri);font-weight:700;cursor:pointer;font-size:12px;font-family:inherit}
+.c{text-align:center;font-size:12px;color:var(--sub);margin-top:14px}
+.err{background:#FDE7E7;color:#9B1C1C;font-size:12px;padding:9px 11px;border-radius:9px;margin-top:12px}
+.card{background:var(--card);border-radius:14px;padding:12px;margin-bottom:11px;box-shadow:0 1px 4px rgba(0,0,0,.12);cursor:pointer}
+.card.nc{cursor:default}
+.row{display:flex;align-items:center;gap:11px}
+.av{width:42px;height:42px;border-radius:50%;background:var(--soft);color:var(--pri);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px;flex:none}
+.nm{font-weight:700;font-size:14px}.sb{font-size:11.5px;color:var(--sub);margin-top:2px}
+.st{color:#F2A900}
+.tag{font-size:10.5px;background:var(--tag);color:var(--tagt);padding:3px 8px;border-radius:8px;font-weight:700}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:18px;padding:7px 13px;font-size:12.5px;margin:0 6px 7px 0;cursor:pointer;font-family:inherit}
+.chip.on{background:var(--pri);color:var(--on);border-color:var(--pri)}
+.chip.on.g{background:var(--acc);border-color:var(--acc)}
+.nav{height:62px;background:var(--card);border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:center;flex:none}
+.nav button{background:none;border:0;font-size:11px;color:var(--sub);cursor:pointer;font-family:inherit}
+.nav svg{display:block;width:22px;height:22px;margin:0 auto 4px}
+.nav .a{color:var(--pri);font-weight:700}
+.bub{max-width:80%;padding:9px 12px;border-radius:14px;font-size:13px;margin-bottom:9px;line-height:1.35;background:var(--card)}
+.bub.r{background:var(--pri);color:var(--on);margin-left:auto}
+.who{font-size:10.5px;color:var(--sub);margin-bottom:3px}
+.tabs{display:flex;border-bottom:2px solid var(--line);margin-bottom:12px}
+.tabs button{flex:1;background:none;border:0;padding:10px;font-size:13px;color:var(--sub);cursor:pointer;font-family:inherit}
+.tabs .on{color:var(--pri);font-weight:700;border-bottom:3px solid var(--pri);margin-bottom:-2px}
+.stars{text-align:center;margin:10px 0}.stars button{background:none;border:0;font-size:34px;color:var(--line);cursor:pointer}.stars .on{color:#F2A900}
+.big{font-size:44px;text-align:center;color:var(--acc);margin-top:30px}
+.send{display:flex;gap:8px;padding:10px 16px;border-top:1px solid var(--line);background:var(--bg)}
+.send .btn{width:auto;margin:0;padding:0 16px}
+.ic{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.chip .ic{width:15px;height:15px}
+.back{display:inline-flex;align-items:center;gap:5px}
+.ico{width:42px;height:42px;border-radius:12px;background:var(--soft);color:var(--pri);display:flex;align-items:center;justify-content:center;flex:none}.ico .ic{width:22px;height:22px}
+.tabs button{display:flex;align-items:center;justify-content:center;gap:6px}
+.rs{background:none;border:0;color:var(--sub);font-size:12px;cursor:pointer;text-decoration:underline;font-family:inherit}
+</style></head><body>
+<div class="phone" id="app"></div>
+<button class="rs" onclick="reset()">Reiniciar prototipo</button>
+<script>
+const T=[
+{n:"Mariana Rodríguez",i:"MR",s:"5.º",m:["Cálculo Diferencial","Álgebra Lineal"],r:"4.9",d:"Disponible hoy"},
+{n:"Jorge Cavazos",i:"JC",s:"7.º",m:["Cálculo Diferencial","Álgebra Lineal"],r:"4.7",d:"Viernes"},
+{n:"Paola Salinas",i:"PS",s:"6.º",m:["Cálculo Diferencial","Probabilidad"],r:"4.6",d:"Sábado"},
+{n:"Carlos Ruiz",i:"CR",s:"8.º",m:["Programación","Estructuras de Datos"],r:"4.8",d:"Disponible hoy"},
+{n:"Fernanda Lozano",i:"FL",s:"6.º",m:["Física","Probabilidad"],r:"4.5",d:"Jueves"}];
+const DAYS=["Mié 11","Jue 12","Vie 13","Sáb 14"],SL=["2:00 p. m.","4:00 p. m.","5:00 p. m.","6:00 p. m."];
+const I={
+home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>',
+search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
+users:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',
+cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+calplus:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/>',
+userplus:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M16 11h6"/>',
+login:'<path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/>',
+back:'<path d="M19 12H5M12 19l-7-7 7-7"/>',
+check:'<path d="M5 12.5l4.5 4.5L19 7"/>',
+checkc:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/>',
+send:'<path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/>',
+star:'<path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',
+pin:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
+video:'<rect x="2" y="6" width="14" height="12" rx="2"/><path d="M22 8l-6 4 6 4z"/>',
+clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'};
+const ic=n=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${I[n]}</svg>`;
+let st,cur,par,tab;
+function init(){st={user:null,err:"",day:"",slot:"",mode:"Presencial",topic:"",up:[],done:[{t:"Jorge Cavazos",m:"Álgebra Lineal",f:"Mar 3",rated:false}],rate:0,
+G:[{n:"Programación",c:12,j:false,msgs:[["Axel","¿Alguien ya hizo el ejercicio de arreglos?"],["Daniela","Sí, puedo compartir mi solución más tarde."]]},
+{n:"Cálculo Diferencial",c:18,j:false,msgs:[["Luis","Mañana repasamos límites a las 4."]]},
+{n:"Física",c:9,j:false,msgs:[["Andrea","¿Tienen los apuntes de cinemática?"]]},
+{n:"Redes",c:7,j:false,msgs:[["Sofía","Subí la práctica de subredes."]]}]};
+cur="reg";par=null;tab="up"}
+function reset(){init();draw()}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+function go(s,p){cur=s;par=p===undefined?null:p;st.err="";draw()}
+function hd(t,sub,back){return `<div class="top">${back?`<button class="back" onclick="go('${back}')">${ic("back")}Volver</button>`:""}<h1>${t}</h1>${sub?`<p>${sub}</p>`:""}</div>`}
+function nav(a){const it=[["home","Inicio"],["buscar","Buscar"],["grupos","Grupos"],["sesiones","Sesiones"]];
+return `<div class="nav">${it.map(x=>`<button class="${a===x[0]?"a":""}" onclick="go('${x[0]}')">${ic({home:"home",buscar:"search",grupos:"users",sesiones:"cal"}[x[0]])}${x[1]}</button>`).join("")}</div>`}
+function tcard(k){const t=T[k];return `<div class="card" data-s="${esc(norm(t.n+" "+t.m.join(" ")))}" onclick="go('perfil',${k})"><div class="row"><div class="av">${t.i}</div><div style="flex:1"><div class="nm">${t.n}</div><div class="sb">${t.m.join(" · ")} · ${t.s} sem.</div><div class="sb"><span class="st">★</span> ${t.r} &nbsp;<span class="tag">${t.d}</span></div></div></div></div>`}
+function flt(v){v=norm(v.trim());let n=0;document.querySelectorAll("[data-s]").forEach(e=>{const ok=!v||e.dataset.s.includes(v);e.style.display=ok?"":"none";if(ok)n++});document.getElementById("cnt").textContent=n+(n===1?" tutor encontrado":" tutores encontrados")}
+function views(){
+if(cur==="reg")return [`<div class="scr pad"><div class="logo">Estudia<span>+</span></div><p class="c" style="margin-top:6px">Tutorías y estudio colaborativo entre estudiantes de FIME</p>
+<h2 style="font-size:18px;margin-top:18px">Crea tu cuenta</h2>
+<label for="a1">Nombre completo</label><input id="a1" placeholder="Escribe tu nombre" autocomplete="off">
+<label for="a2">Correo institucional</label><input id="a2" type="email" placeholder="matricula@uanl.edu.mx" autocomplete="off">
+<label for="a3">Carrera</label><select id="a3"><option value="">Selecciona tu carrera</option><option>Ing. en Tecnologías de Software</option><option>Ing. Mecánico Administrador</option><option>Ing. en Mecatrónica</option><option>Ing. Mecánico Electricista</option><option>Ing. en Electrónica y Comunicaciones</option></select>
+<label for="a4">Contraseña</label><input id="a4" type="password" placeholder="Mínimo 8 caracteres">
+${st.err?`<div class="err">${st.err}</div>`:""}
+<button class="btn" onclick="reg()">${ic("userplus")}Crear cuenta</button>
+<p class="c">¿Ya tienes cuenta? <button class="lnk" onclick="go('login')">Inicia sesión</button></p></div>`,""];
+if(cur==="login")return [`<div class="scr pad"><div class="logo">Estudia<span>+</span></div><h2 style="font-size:18px;margin-top:24px">Inicia sesión</h2>
+<label for="b1">Correo institucional</label><input id="b1" type="email" placeholder="matricula@uanl.edu.mx">
+<label for="b2">Contraseña</label><input id="b2" type="password" placeholder="Tu contraseña">
+${st.err?`<div class="err">${st.err}</div>`:""}
+<button class="btn" onclick="login()">${ic("login")}Entrar</button>
+<p class="c">¿No tienes cuenta? <button class="lnk" onclick="go('reg')">Crea una</button></p></div>`,""];
+if(cur==="home")return [`${hd("Hola, "+esc(st.user.split(" ")[0]),"¿Qué quieres hacer hoy?")}<div class="scr pad">
+<div class="card" onclick="go('buscar')"><div class="row"><div class="ico">${ic("search")}</div><div><div class="nm">Buscar tutor</div><div class="sb">Encuentra apoyo de compañeros de FIME por materia</div></div></div></div>
+<div class="card" onclick="go('grupos')"><div class="row"><div class="ico">${ic("users")}</div><div><div class="nm">Grupos de estudio</div><div class="sb">Únete y estudia en colaboración</div></div></div></div>
+<div class="card" onclick="go('sesiones')"><div class="row"><div class="ico">${ic("cal")}</div><div><div class="nm">Mis sesiones</div><div class="sb">Consulta, agenda y califica tus tutorías</div></div></div></div></div>`,"home"];
+if(cur==="buscar")return [`${hd("Buscar tutor","Encuentra apoyo de compañeros de FIME")}<div class="scr pad"><input placeholder="Busca por materia o nombre" oninput="flt(this.value)" style="margin-bottom:10px"><p class="sb" id="cnt" style="margin-bottom:8px">${T.length} tutores encontrados</p>${T.map((_,k)=>tcard(k)).join("")}</div>`,"buscar"];
+if(cur==="perfil"){const t=T[par];return [`${hd(t.n,t.m.join(" · "),"buscar")}<div class="scr pad"><div class="card nc"><div class="row"><div class="av">${t.i}</div><div><div class="nm">${t.n}</div><div class="sb">${t.s} semestre · FIME</div><div class="sb"><span class="st">★</span> ${t.r} · 24 tutorías</div></div></div></div>
+<label>Materias</label><div>${t.m.map(m=>`<span class="chip">${m}</span>`).join("")}</div>
+<label>Disponibilidad</label><p class="sb" style="font-size:13px">${t.d} · Lunes a sábado por la tarde</p>
+<label>Reseñas</label><div class="card nc"><div class="sb" style="font-size:12.5px"><span class="st">★★★★★</span> “Explica con paciencia y con ejemplos claros.”</div></div>
+<button class="btn" onclick="st.day=st.slot=st.topic='';st.mode='Presencial';go('agendar',${par})">${ic("calplus")}Agendar tutoría</button></div>`,"buscar"]}
+if(cur==="agendar"){const t=T[par];return [`${hd("Agendar tutoría",t.n,"perfil").replace("go('perfil')","go('perfil',"+par+")")}<div class="scr pad">
+<label>Día</label><div>${DAYS.map(d=>`<button class="chip ${st.day===d?"on":""}" onclick="st.day='${d}';draw()">${ic("cal")}${d}</button>`).join("")}</div>
+<label>Horario disponible</label><div>${SL.map(d=>`<button class="chip ${st.slot===d?"on g":""}" onclick="st.slot='${d}';draw()">${ic("clock")}${d}</button>`).join("")}</div>
+<label>Modalidad</label><div>${["Presencial","En línea"].map(d=>`<button class="chip ${st.mode===d?"on":""}" onclick="st.mode='${d}';draw()">${ic(d==="Presencial"?"pin":"video")}${d}</button>`).join("")}</div>
+<label for="tp">Tema a reforzar (opcional)</label><input id="tp" value="${esc(st.topic)}" placeholder="Ej. Límites y derivadas" oninput="st.topic=this.value">
+${st.err?`<div class="err">${st.err}</div>`:""}
+<button class="btn g" onclick="agenda()">${ic("check")}Confirmar sesión</button></div>`,"buscar"]}
+if(cur==="ok"){const s=st.up[st.up.length-1];return [`<div class="scr pad"><div class="big">✔</div><h2 style="text-align:center;margin-top:10px">¡Sesión agendada!</h2>
+<div class="card nc" style="margin-top:18px"><div class="nm">${s.t}</div><div class="sb">${s.m}</div><div class="sb">${s.d}, ${s.h} · ${s.mo}</div>${s.tp?`<div class="sb">Tema: ${esc(s.tp)}</div>`:""}</div>
+<button class="btn" onclick="tab='up';go('sesiones')">${ic("cal")}Ver mis sesiones</button><button class="btn o" onclick="go('home')">${ic("home")}Ir al inicio</button></div>`,"sesiones"]}
+if(cur==="grupos")return [`${hd("Grupos de estudio","Aprende junto a otros compañeros")}<div class="scr pad">${st.G.map((g,k)=>`<div class="card nc"><div class="row"><div class="av">${g.n[0]}</div><div style="flex:1"><div class="nm">${g.n}</div><div class="sb">${g.c+(g.j?1:0)} integrantes</div></div><button class="chip ${g.j?"":"on"}" style="margin:0" onclick="${g.j?"":"st.G["+k+"].j=true;"}go('chat',${k})">${ic(g.j?"login":"userplus")}${g.j?"Entrar":"Unirme"}</button></div></div>`).join("")}</div>`,"grupos"];
+if(cur==="chat"){const g=st.G[par];return [`${hd(g.n,(g.c+1)+" integrantes · Próxima sesión: jueves 12, 5:00 p. m.","grupos")}<div class="scr pad" id="ch">${g.msgs.map(m=>m[0]==="Tú"?`<div class="bub r">${esc(m[1])}</div>`:`<div class="who">${m[0]}</div><div class="bub">${esc(m[1])}</div>`).join("")}</div>
+<div class="send"><input id="mi" placeholder="Escribe un mensaje" onkeydown="if(event.key==='Enter')snd()"><button class="btn" onclick="snd()">${ic("send")}Enviar</button></div>`,"grupos"]}
+if(cur==="sesiones")return [`${hd("Mis sesiones","Consulta y califica tus tutorías")}<div class="scr pad"><div class="tabs"><button class="${tab==="up"?"on":""}" onclick="tab='up';draw()">${ic("cal")}Próximas</button><button class="${tab==="done"?"on":""}" onclick="tab='done';draw()">${ic("checkc")}Realizadas</button></div>
+${tab==="up"?(st.up.length?st.up.map(s=>`<div class="card nc"><div class="nm">${s.t}</div><div class="sb">${s.m} · ${s.d}, ${s.h}</div><div class="sb">${s.mo}</div></div>`).join(""):`<p class="c">Aún no tienes sesiones próximas.</p>`)
+:st.done.map((s,k)=>`<div class="card nc"><div class="nm">${s.t}</div><div class="sb">${s.m} · ${s.f}</div>${s.rated?`<div class="sb" style="margin-top:6px"><span class="tag">Calificada</span></div>`:`<button class="btn" style="margin-top:10px;padding:10px" onclick="st.rate=0;go('calif',${k})">${ic("star")}Calificar tutoría</button>`}</div>`).join("")}</div>`,"sesiones"];
+if(cur==="calif"){const s=st.done[par];return [`${hd("Califica tu tutoría",s.t+" · "+s.m,"sesiones")}<div class="scr pad"><div class="card nc"><div class="nm" style="text-align:center">¿Cómo estuvo tu tutoría?</div>
+<div class="stars">${[1,2,3,4,5].map(n=>`<button class="${st.rate>=n?"on":""}" aria-label="${n} estrellas" onclick="st.rate=${n};draw()">★</button>`).join("")}</div>
+<input id="cm" placeholder="Escribe un comentario (opcional)">
+${st.err?`<div class="err">${st.err}</div>`:""}
+<button class="btn" onclick="enviar(${par})">${ic("send")}Enviar calificación</button></div></div>`,"sesiones"]}
+if(cur==="gracias")return [`<div class="scr pad"><div class="big">★</div><h2 style="text-align:center;margin-top:10px">¡Gracias por tu calificación!</h2><p class="c">Tu opinión ayuda a otros estudiantes a elegir tutor.</p><button class="btn" onclick="tab='done';go('sesiones')">${ic("cal")}Volver a mis sesiones</button></div>`,"sesiones"];
+}
+function draw(){const y=document.querySelector(".scr")?document.querySelector(".scr").scrollTop:0;const v=views();document.getElementById("app").innerHTML=v[0]+(v[1]?nav(v[1]):"");
+const c=document.getElementById("ch");if(c)c.scrollTop=c.scrollHeight;else if(document.querySelector(".scr"))document.querySelector(".scr").scrollTop=y}
+function reg(){const n=a1.value.trim(),e=a2.value.trim().toLowerCase(),c=a3.value,p=a4.value;
+if(!n||!e||!c||!p){st.err="Completa todos los campos para continuar.";return draw2([n,e,c,p])}
+if(!e.endsWith("@uanl.edu.mx")){st.err="Usa tu correo institucional (@uanl.edu.mx).";return draw2([n,e,c,p])}
+if(p.length<8){st.err="La contraseña debe tener al menos 8 caracteres.";return draw2([n,e,c,p])}
+st.user=n;go("home")}
+function draw2(v){draw();a1.value=v[0];a2.value=v[1];a3.value=v[2];a4.value=v[3]}
+function login(){const e=b1.value.trim(),p=b2.value;if(!e||!p){st.err="Escribe tu correo y contraseña.";const x=e;draw();b1.value=x;return}
+st.user=st.user||e.split("@")[0];go("home")}
+function agenda(){if(!st.day||!st.slot){st.err="Elige un día y un horario para continuar.";return draw()}
+const t=T[par];st.up.push({t:t.n,m:t.m[0],d:st.day,h:st.slot,mo:st.mode,tp:st.topic});go("ok")}
+function snd(){const i=document.getElementById("mi"),v=i.value.trim();if(!v)return;st.G[par].msgs.push(["Tú",v]);draw();document.getElementById("mi").focus()}
+function enviar(k){if(!st.rate){st.err="Elige de 1 a 5 estrellas.";const c=cm.value;draw();cm.value=c;return}
+st.done[k].rated=true;go("gracias")}
+init();draw();
+</script></body></html>

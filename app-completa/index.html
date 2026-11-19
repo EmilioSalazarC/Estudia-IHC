@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Estudia+</title>
+<style>
+:root{--nav:#1f3864;--bg:#f4f6fa;--card:#fff;--ink:#1b2438;--mut:#5b6580;--line:#d9deea;--btn:#1f3864;--btnt:#fff;--soft:#e8eef9;--gold:#d4a017;--ok:#1d7a46;--okb:#d9f2e4;--wa:#8a5a00;--wab:#fff0cc;--info:#1f4e9a;--infob:#dce9fb;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--nav:#16223f;--bg:#0f1524;--card:#182036;--ink:#e8ecf6;--mut:#a3adc7;--line:#2b3552;--btn:#4a74c9;--soft:#222d4a;--ok:#7fe0a8;--okb:#17402b;--wa:#ffd978;--wab:#4a3a10;--info:#a9c8ff;--infob:#1f3358;color-scheme:dark}}
+:root[data-theme="dark"]{--nav:#16223f;--bg:#0f1524;--card:#182036;--ink:#e8ecf6;--mut:#a3adc7;--line:#2b3552;--btn:#4a74c9;--soft:#222d4a;--ok:#7fe0a8;--okb:#17402b;--wa:#ffd978;--wab:#4a3a10;--info:#a9c8ff;--infob:#1f3358;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Segoe UI",system-ui,-apple-system,Arial,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--nav);z-index:30}
+h1,h2,h3{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+header{background:var(--nav);color:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;gap:18px;padding:10px 20px;flex-wrap:wrap}
+.brand{font-size:21px;font-weight:700;margin-right:8px}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav button{background:none;border:0;color:#dbe4f7;padding:8px 12px;border-radius:8px;cursor:pointer}
+nav button[aria-current=page]{background:rgba(255,255,255,.16);color:#fff;font-weight:600}
+.sp{flex:1}
+.nsearch{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);border-radius:20px;padding:0 12px;min-width:220px}
+.nsearch svg{width:16px;height:16px;stroke:#dbe4f7;fill:none;stroke-width:2;stroke-linecap:round}
+.nsearch input{background:none;border:0;color:#fff;padding:8px 0;width:100%;outline:0}
+.nsearch input::placeholder{color:#c3cfe8}
+.me{position:relative}
+.me>button{width:36px;height:36px;border-radius:50%;border:0;background:var(--gold);color:#2b2100;font-weight:700;cursor:pointer}
+.menu{position:absolute;right:0;top:44px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:6px;min-width:190px;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.menu p{margin:4px 8px 8px;font-size:12px;color:var(--mut);word-break:break-all}
+.menu button{width:100%;text-align:left;background:none;border:0;padding:8px;border-radius:6px;cursor:pointer}
+.menu button:hover{background:var(--soft)}
+main{max-width:1100px;margin:0 auto;padding:20px}
+h2{font-size:19px;margin:28px 0 12px}
+.hero{background:var(--soft);border-radius:14px;padding:30px 20px;text-align:center}
+.hero h1{font-size:26px;color:var(--ink)}
+.hero p{color:var(--mut);margin:6px 0 18px}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{border:2px solid var(--btn);background:var(--btn);color:var(--btnt);padding:10px 22px;border-radius:8px;font-weight:600;cursor:pointer;min-width:160px}
+.btn.o{background:transparent;color:var(--ink)}
+.btn.s{padding:7px 14px;min-width:0;font-size:14px}
+.btn.g{border-color:var(--line);background:transparent;color:var(--ink)}
+.bi{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.btn.s .bi,.chip .bi{width:16px;height:16px}
+nav button,.btn,.chip,.menu button{display:inline-flex;align-items:center;gap:7px}
+.btn{justify-content:center}
+.menu button{display:flex}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #6aa0ff;outline-offset:2px}
+.grid{display:grid;gap:12px}
+.g6{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.g4{grid-template-columns:repeat(auto-fill,minmax(235px,1fr))}
+.sub{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;text-align:left;cursor:pointer}
+.sub b{display:block;margin-top:8px}.sub small{color:var(--mut)}
+.ic{width:30px;height:30px;stroke:var(--btn);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.th{display:flex;align-items:center;gap:10px}
+.av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;flex:none}
+.th small{color:var(--mut);display:block}
+.stars{position:relative;display:inline-block;width:80px;height:16px;vertical-align:middle}
+.stars .g,.stars .f{display:flex;white-space:nowrap}
+.stars svg{width:16px;height:16px;flex:none}
+.stars .g svg{fill:var(--line)}.stars .f svg{fill:var(--gold)}
+.stars .f{position:absolute;inset:0 auto 0 0;overflow:hidden}
+.rt{font-size:13px;color:var(--mut)}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{background:var(--soft);border-radius:12px;padding:2px 9px;font-size:12.5px}
+.tc .btn{margin-top:auto}
+.tl{list-style:none;margin:0;padding:0 0 0 18px;border-left:3px solid var(--line)}
+.tl li{position:relative;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:0 0 12px 14px}
+.tl li::before{content:"";position:absolute;left:-30px;top:14px;width:13px;height:13px;border-radius:50%;background:var(--btn);border:2px solid var(--bg)}
+.empty{color:var(--mut);background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:18px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.bar input,.bar select,.f1 input,.f1 select,.f1 textarea{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.bar input{flex:1;min-width:200px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:5px 13px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--btn);color:var(--btnt);border-color:var(--btn)}
+.pill{display:inline-block;border-radius:12px;padding:2px 10px;font-size:12.5px;font-weight:600}
+.p-pendiente{background:var(--wab);color:var(--wa)}.p-confirmada{background:var(--infob);color:var(--info)}.p-realizada,.p-calificada{background:var(--okb);color:var(--ok)}
+.ses{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:10px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.ses>div:first-child{flex:1;min-width:220px}.ses small{color:var(--mut)}
+.rate button{background:none;border:0;font-size:24px;color:var(--gold);cursor:pointer;padding:0 2px}
+.ov{position:fixed;inset:0;background:rgba(10,16,30,.55);display:grid;place-items:center;z-index:40;padding:16px}
+.mod{background:var(--card);border-radius:14px;padding:20px;width:100%;max-width:440px;max-height:92vh;overflow:auto}
+.f1{display:grid;gap:10px}.f1 label{display:grid;gap:4px;font-size:13.5px;color:var(--mut)}
+.f1 .row{display:flex;gap:8px;flex-wrap:wrap}.f1 .row label{flex-direction:row;align-items:center;gap:5px;color:var(--ink)}
+.err{color:#c0392b;font-size:13px;min-height:18px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#1b2438;color:#fff;padding:10px 18px;border-radius:10px;z-index:50;max-width:90vw}
+.login{max-width:400px;margin:8vh auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+.login h1{font-size:28px;color:var(--ink);margin-bottom:6px}.login p{color:var(--mut)}
+.post{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:10px}
+.rep{border-left:3px solid var(--line);margin:8px 0 0 4px;padding-left:10px;font-size:14px}
+.rf{display:flex;gap:8px;margin-top:8px}.rf input{flex:1;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+@media(max-width:640px){header{gap:8px}.nsearch{order:5;width:100%}.hero h1{font-size:22px}}
+@media(prefers-reduced-motion:no-preference){.mod{animation:pop .15s ease-out}@keyframes pop{from{transform:scale(.96);opacity:.5}}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const SUBJ=['Cálculo','Programación','Redes','Física','Base de Datos','Álgebra'];
+const IC={
+'Cálculo':'<path d="M15 3c-2.6 0-3 1.6-3 3.6v10.8c0 2-.4 3.6-3 3.6"/><path d="M6 12h3M15 12h3"/>',
+'Programación':'<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 5l-4 14"/>',
+'Redes':'<circle cx="12" cy="5" r="2.3"/><circle cx="5" cy="19" r="2.3"/><circle cx="19" cy="19" r="2.3"/><path d="M11 7l-5 10M13 7l5 10M7.5 19h9"/>',
+'Física':'<ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="1.5"/>',
+'Base de Datos':'<ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v14c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',
+'Álgebra':'<path d="M18 5H6l6 7-6 7h12"/>'};
+const ic=n=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${IC[n]}</svg>`;
+const BI={
+home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>',
+search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
+cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+calplus:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/>',
+chat:'<path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+cap:'<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v6"/>',
+check:'<path d="M5 12.5l4.5 4.5L19 7"/>',
+checkc:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/>',
+x:'<path d="M6 6l12 12M18 6L6 18"/>',
+send:'<path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/>',
+userplus:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M16 11h6"/>',
+login:'<path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/>',
+logout:'<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/>',
+grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>'};
+const bi=n=>`<svg class="bi" viewBox="0 0 24 24" aria-hidden="true">${BI[n]}</svg>`;
+const sbi=s=>s==='Todas'?bi('grid'):`<svg class="bi" viewBox="0 0 24 24" aria-hidden="true">${IC[s]}</svg>`;
+const STAR='<svg viewBox="0 0 24 24"><path d="M12 2l3 6.9 7.5.6-5.7 4.9 1.7 7.3L12 17.8 5.5 21.7l1.7-7.3L1.5 9.5 9 8.9z"/></svg>';
+const DAYS=['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],FR=['Mañana','Tarde','Noche','Sábado'];
+const COL=['#c0623a','#3d7fc4','#4f9a45','#b0478a','#6b5bb5','#2b8a8f'];
+const seed=()=>({user:null,sid:1,
+tutors:[
+{id:1,n:'Ana G.',sem:'7.º semestre · ISC',m:['Cálculo','Álgebra'],mod:'Ambas',f:['Tarde','Sábado'],r:4.9,nr:18},
+{id:2,n:'Luis R.',sem:'8.º semestre · ISC',m:['Programación','Redes'],mod:'En línea',f:['Tarde','Noche'],r:4.8,nr:12},
+{id:3,n:'Marco T.',sem:'6.º semestre · IMTC',m:['Física','Cálculo'],mod:'Presencial',f:['Mañana','Sábado'],r:4.6,nr:9},
+{id:4,n:'Sofía P.',sem:'7.º semestre · ISC',m:['Base de Datos','Programación'],mod:'Ambas',f:['Tarde','Noche'],r:4.7,nr:15},
+{id:5,n:'Diego M.',sem:'9.º semestre · IEA',m:['Redes','Física'],mod:'En línea',f:['Noche'],r:4.5,nr:6}],
+sessions:[],
+posts:[{id:1,m:'Redes',a:'Diego M.',t:'¿Cómo calculo la máscara de subred para 60 hosts?',r:[{a:'Luis R.',t:'Necesitas 6 bits de host (2^6 = 64), así que la máscara es /26.'}]},
+{id:2,m:'Cálculo',a:'Ana G.',t:'¿Cuándo conviene integrar por partes?',r:[{a:'Marco T.',t:'Cuando el integrando es un producto de funciones de distinto tipo, por ejemplo x·e^x.'}]}]});
+let S;try{S=JSON.parse(localStorage.getItem('estudia')||'null')}catch(e){S=null}
+S=S||seed();
+const save=()=>{try{localStorage.setItem('estudia',JSON.stringify(S))}catch(e){}};
+let V='home',Q={q:'',m:'Todas',mod:'Todas',fr:'Todas'},FM='Todas',modal=null,menu=false,loginErr='';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ini=n=>n.trim()[0].toUpperCase();
+const stars=t=>t.nr?`<span class="stars" role="img" aria-label="${t.r.toFixed(1)} de 5"><span class="g">${STAR.repeat(5)}</span><span class="f" style="width:${t.r/5*100}%">${STAR.repeat(5)}</span></span> <span class="rt">${t.r.toFixed(1)} (${t.nr} reseñas)</span>`:'<span class="rt">Nuevo, sin reseñas</span>';
+const tcard=t=>`<article class="tc"><div class="th"><div class="av" style="background:${COL[t.id%COL.length]}">${ini(t.n)}</div><div><b>${esc(t.n)}</b><small>${esc(t.sem)}</small></div></div>
+<div>${stars(t)}</div><div class="tags">${t.m.map(x=>`<span class="tag">${x}</span>`).join('')}</div>
+<div class="rt">${t.mod} · ${t.f.join(', ')}</div><button class="btn s" data-a="req" data-id="${t.id}">${bi('calplus')}Solicitar sesión</button></article>`;
+const cnt=s=>S.tutors.filter(t=>t.m.includes(s)).length;
+const ord=s=>DAYS.indexOf(s.d)*2400+parseInt(s.h.replace(':',''));
+const lab={pendiente:'Pendiente de confirmación',confirmada:'Confirmada',realizada:'Realizada',calificada:'Calificada'};
+function toast(m){const e=document.createElement('div');e.className='toast';e.textContent=m;e.setAttribute('role','status');document.body.appendChild(e);setTimeout(()=>e.remove(),2800)}
+
+function home(){
+const conf=S.sessions.filter(s=>s.st==='confirmada').sort((a,b)=>ord(a)-ord(b));
+return `<section class="hero"><h1>Aprende y enseña junto a tu comunidad FIME</h1><p>Encuentra un compañero que te explique, o comparte lo que ya dominas.</p>
+<div class="btns"><button class="btn" data-a="go" data-v="buscar">${bi('search')}Buscar tutor</button><button class="btn o" data-a="tutor">${bi('cap')}Quiero ser tutor</button></div></section>
+<h2>Materias populares</h2><div class="grid g6">${SUBJ.map(s=>`<button class="sub" data-a="subj" data-m="${s}">${ic(s)}<b>${s}</b><small>${cnt(s)} tutores disponibles</small></button>`).join('')}</div>
+<h2>Tutores recomendados</h2><div class="grid g4">${[...S.tutors].sort((a,b)=>b.r-a.r).slice(0,4).map(tcard).join('')}</div>
+<h2>Próximas sesiones</h2>${conf.length?`<ol class="tl">${conf.map(s=>`<li><b>${s.d} ${s.h}</b> – ${esc(s.m)}: ${esc(s.t)}<br><small>${s.tn} · ${s.mod}</small></li>`).join('')}</ol>`:'<div class="empty">Aún no tienes sesiones confirmadas. Busca un tutor y solicita tu primera sesión.</div>'}`}
+
+function buscar(){
+const q=Q.q.toLowerCase();
+const r=S.tutors.filter(t=>(Q.m==='Todas'||t.m.includes(Q.m))&&(Q.mod==='Todas'||t.mod===Q.mod||t.mod==='Ambas')&&(Q.fr==='Todas'||t.f.includes(Q.fr))&&(!q||(t.n+' '+t.m.join(' ')).toLowerCase().includes(q)));
+return `<h2 style="margin-top:0">Buscar tutor</h2>
+<div class="bar"><input id="q" type="search" placeholder="Materia o nombre del tutor" value="${esc(Q.q)}" aria-label="Buscar"><select id="mod" aria-label="Modalidad">${['Todas','Presencial','En línea'].map(o=>`<option ${Q.mod===o?'selected':''}>${o}</option>`).join('')}</select>
+<select id="fr" aria-label="Horario">${['Todas',...FR].map(o=>`<option ${Q.fr===o?'selected':''}>${o}</option>`).join('')}</select></div>
+<div class="chips">${['Todas',...SUBJ].map(s=>`<button class="chip" aria-pressed="${Q.m===s}" data-a="chip" data-m="${s}">${sbi(s)}${s}</button>`).join('')}</div>
+${r.length?`<div class="grid g4">${r.map(tcard).join('')}</div>`:'<div class="empty">Ningún tutor coincide con esos filtros. Prueba con otra materia u horario.</div>'}`}
+
+function sesiones(){
+const l=[...S.sessions].sort((a,b)=>ord(a)-ord(b));
+return `<h2 style="margin-top:0">Mis sesiones</h2>`+(l.length?l.map(s=>{
+let act='';
+if(s.st==='pendiente')act=`<button class="btn s" data-a="conf" data-id="${s.id}">${bi('check')}Simular confirmación del tutor</button><button class="btn s g" data-a="canc" data-id="${s.id}">${bi('x')}Cancelar</button>`;
+if(s.st==='confirmada')act=`<button class="btn s" data-a="done" data-id="${s.id}">${bi('checkc')}Marcar como realizada</button>`;
+if(s.st==='realizada')act=`<span class="rate" role="group" aria-label="Calificar sesión">${[1,2,3,4,5].map(n=>`<button data-a="rate" data-id="${s.id}" data-n="${n}" aria-label="${n} estrellas">★</button>`).join('')}</span>`;
+if(s.st==='calificada')act=`<span class="rt">Tu calificación: ${s.rate} de 5</span>`;
+return `<div class="ses"><div><b>${s.d} ${s.h} – ${esc(s.m)}</b><br>${esc(s.t)}<br><small>Con ${s.tn} · ${s.mod} · ${s.g}</small></div><span class="pill p-${s.st}">${lab[s.st]}</span>${act}</div>`}).join(''):'<div class="empty">No tienes sesiones todavía. Solicita una desde Buscar tutor; el tutor debe confirmarla antes de que quede agendada.</div>')}
+
+function foro(){
+const l=S.posts.filter(p=>FM==='Todas'||p.m===FM);
+return `<h2 style="margin-top:0">Foro de materias</h2><div class="chips">${['Todas',...SUBJ].map(s=>`<button class="chip" aria-pressed="${FM===s}" data-a="fm" data-m="${s}">${sbi(s)}${s}</button>`).join('')}</div>
+<form class="bar" data-f="post"><select name="m" aria-label="Materia">${SUBJ.map(s=>`<option ${FM===s?'selected':''}>${s}</option>`).join('')}</select><input name="t" required placeholder="Escribe tu pregunta" aria-label="Pregunta"><button class="btn s">${bi('send')}Publicar</button></form>
+${l.length?l.map(p=>`<div class="post"><span class="tag">${p.m}</span> <small class="rt">${esc(p.a)}</small><p style="margin:6px 0"><b>${esc(p.t)}</b></p>${p.r.map(x=>`<div class="rep"><small class="rt">${esc(x.a)}</small><br>${esc(x.t)}</div>`).join('')}
+<form class="rf" data-f="rep" data-id="${p.id}"><input name="t" required placeholder="Responder" aria-label="Responder"><button class="btn s g">${bi('send')}Enviar</button></form></div>`).join(''):'<div class="empty">Aún no hay preguntas en esta materia. Publica la primera.</div>'}`}
+
+function modalHtml(){
+if(!modal)return '';
+if(modal.k==='req'){const t=S.tutors.find(x=>x.id===modal.id);const mo=t.mod==='Ambas'?['Presencial','En línea']:[t.mod];
+return `<div class="ov"><form class="mod f1" data-f="req" role="dialog" aria-label="Solicitar sesión"><h3>Solicitar sesión con ${esc(t.n)}</h3>
+<label>Materia<select name="m">${t.m.map(x=>`<option>${x}</option>`).join('')}</select></label>
+<label>Tema que necesitas reforzar<textarea name="t" rows="2" required placeholder="Ej. Integrales por sustitución"></textarea></label>
+<div class="row"><label>Día<select name="d">${DAYS.map(x=>`<option>${x}</option>`).join('')}</select></label><label>Hora<input type="time" name="h" value="18:00" required></label></div>
+<div class="row"><label>Modalidad<select name="mod">${mo.map(x=>`<option>${x}</option>`).join('')}</select></label><label>Tipo<select name="g"><option>Individual</option><option>Grupal</option></select></label></div>
+<p class="rt" style="margin:0">El tutor debe confirmar la solicitud antes de que quede agendada.</p>
+<div class="btns"><button type="button" class="btn s g" data-a="close">${bi('x')}Cancelar</button><button class="btn s">${bi('send')}Enviar solicitud</button></div></form></div>`}
+return `<div class="ov"><form class="mod f1" data-f="tutor" role="dialog" aria-label="Ser tutor"><h3>Quiero ser tutor</h3>
+<fieldset style="border:0;padding:0;margin:0"><legend class="rt">Materias que dominas</legend><div class="row">${SUBJ.map(s=>`<label><input type="checkbox" name="m" value="${s}">${s}</label>`).join('')}</div></fieldset>
+<label>Modalidad<select name="mod"><option>Ambas</option><option>Presencial</option><option>En línea</option></select></label>
+<fieldset style="border:0;padding:0;margin:0"><legend class="rt">Tu disponibilidad</legend><div class="row">${FR.map(s=>`<label><input type="checkbox" name="f" value="${s}">${s}</label>`).join('')}</div></fieldset>
+<div class="err" id="terr"></div><div class="btns"><button type="button" class="btn s g" data-a="close">${bi('x')}Cancelar</button><button class="btn s">${bi('userplus')}Publicar mi perfil</button></div></form></div>`}
+
+function login(){return `<main><div class="login"><h1>Estudia+</h1><p>Tutoría entre estudiantes de FIME. Entra con tu correo institucional.</p>
+<form class="f1" data-f="login"><label>Correo institucional<input name="e" type="email" required placeholder="matricula@uanl.edu.mx" autocomplete="email"></label><div class="err">${loginErr}</div><button class="btn" style="width:100%">${bi('login')}Entrar</button></form>
+<p style="font-size:12.5px;margin-top:14px">Versión de demostración: solo se valida el dominio @uanl.edu.mx; la verificación real del correo requiere un servidor.</p></div></main>`}
+
+function render(){
+const a=$('#app');
+if(!S.user){a.innerHTML=login();return}
+const nm=S.user.split('@')[0];
+const N=[['home','Inicio','home'],['buscar','Buscar tutor','search'],['sesiones','Mis sesiones','cal'],['foro','Foro de materias','chat']];
+a.innerHTML=`<header><span class="brand">Estudia+</span><nav aria-label="Principal">${N.map(([v,t,i])=>`<button data-a="go" data-v="${v}" ${V===v?'aria-current="page"':''}>${bi(i)}${t}</button>`).join('')}</nav><span class="sp"></span>
+<form class="nsearch" data-f="nsearch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input name="q" placeholder="Buscar materia o tutor…" aria-label="Buscar materia o tutor"></form>
+<div class="me"><button data-a="menu" aria-label="Cuenta" aria-expanded="${menu}">${ini(nm)}</button>${menu?`<div class="menu"><p>${esc(S.user)}</p><button data-a="out">${bi('logout')}Cerrar sesión</button></div>`:''}</div></header>
+<main>${{home,buscar,sesiones,foro}[V]()}</main>${modalHtml()}`;
+}
+
+document.addEventListener('click',e=>{
+const b=e.target.closest('[data-a]');
+if(!b){if(menu){menu=false;render()}return}
+const a=b.dataset.a,id=+b.dataset.id,fn=x=>S.sessions.find(s=>s.id===id);
+if(a==='go'){V=b.dataset.v;menu=false;scrollTo(0,0)}
+else if(a==='subj'){Q={q:'',m:b.dataset.m,mod:'Todas',fr:'Todas'};V='buscar'}
+else if(a==='chip'){Q.m=b.dataset.m}
+else if(a==='fm'){FM=b.dataset.m}
+else if(a==='menu'){e.stopPropagation();menu=!menu}
+else if(a==='out'){S.user=null;menu=false;save()}
+else if(a==='req'){modal={k:'req',id}}
+else if(a==='tutor'){modal={k:'tutor'}}
+else if(a==='close'){modal=null}
+else if(a==='conf'){fn().st='confirmada';save();toast('El tutor confirmó la sesión (simulado).')}
+else if(a==='canc'){S.sessions=S.sessions.filter(s=>s.id!==id);save()}
+else if(a==='done'){fn().st='realizada';save()}
+else if(a==='rate'){const s=fn(),n=+b.dataset.n,t=S.tutors.find(x=>x.id===s.tid);
+if(t){t.r=(t.r*t.nr+n)/(t.nr+1);t.nr++}s.rate=n;s.st='calificada';save();toast('Gracias por tu reseña.')}
+render()});
+
+document.addEventListener('input',e=>{
+const t=e.target;
+if(t.id==='q'){Q.q=t.value;const p=t.selectionStart;render();const n=$('#q');n.focus();n.setSelectionRange(p,p)}
+else if(t.id==='mod'||t.id==='fr'){Q[t.id]=t.value;render()}});
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal){modal=null;render()}});
+
+document.addEventListener('submit',e=>{
+e.preventDefault();
+const f=e.target,k=f.dataset.f,d=new FormData(f);
+if(k==='login'){const m=String(d.get('e')).trim().toLowerCase();
+if(!/^[^@\s]+@uanl\.edu\.mx$/.test(m)){loginErr='Usa tu correo institucional que termina en @uanl.edu.mx.';render();return}
+loginErr='';S.user=m;save()}
+else if(k==='nsearch'){Q={q:String(d.get('q')),m:'Todas',mod:'Todas',fr:'Todas'};V='buscar'}
+else if(k==='post'){S.posts.unshift({id:Date.now(),m:d.get('m'),a:S.user.split('@')[0],t:d.get('t'),r:[]});save()}
+else if(k==='rep'){S.posts.find(p=>p.id==f.dataset.id).r.push({a:S.user.split('@')[0],t:d.get('t')});save()}
+else if(k==='req'){const t=S.tutors.find(x=>x.id===modal.id);
+S.sessions.push({id:S.sid++,tid:t.id,tn:t.n,m:d.get('m'),t:d.get('t'),d:d.get('d'),h:d.get('h'),mod:d.get('mod'),g:d.get('g'),st:'pendiente'});
+save();modal=null;V='sesiones';toast('Solicitud enviada. El tutor debe confirmarla.')}
+else if(k==='tutor'){const m=d.getAll('m'),fr=d.getAll('f');
+if(!m.length||!fr.length){$('#terr').textContent='Elige al menos una materia y una franja de disponibilidad.';return}
+const nm=S.user.split('@')[0];
+S.tutors.push({id:Date.now()%100000+10,n:nm,sem:'Estudiante FIME',m,mod:d.get('mod'),f:fr,r:0,nr:0});save();modal=null;toast('Tu perfil de tutor ya aparece en las búsquedas.')}
+render()});
+render();
+</script>
+</body>
+</html>
